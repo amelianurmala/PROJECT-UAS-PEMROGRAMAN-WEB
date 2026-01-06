@@ -113,20 +113,98 @@ PROJECT-UAS
 ```
 
 ---
-## 6. Alur Pengerjaan Proyek 
 
-1. Membuat database **db_peminjaman_buku**
-2. Menentukan konsep **MVC**
-3. Membuat `.htaccess` untuk routing
-4. Membuat `index.php` sebagai Front Controller
-5. Membuat koneksi database
-6. Membuat Model (User, Buku, Peminjaman)
-7. Membuat Controller (Auth, Buku, Peminjaman)
-8. Membuat View dengan Bootstrap
-9. Mengatur session login
-10. Implementasi transaksi peminjaman
-11. Menambahkan fitur denda & laporan
-12. Testing dan debugging
+## 6. Database Sistem Perpustakaan Digital
+
+Aplikasi ini menggunakan database **MySQL** dengan nama:
+
+```sql
+db_peminjaman_buku
+```
+
+Database berfungsi untuk menyimpan data pengguna, buku, kategori, dan transaksi peminjaman.
+
+---
+
+### - Tabel `users`
+
+Digunakan untuk menyimpan data akun yang bisa login ke sistem.
+
+```sql
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nama VARCHAR(100),
+    username VARCHAR(50),
+    password VARCHAR(255),
+    role VARCHAR(20)
+);
+```
+
+Password disimpan dalam bentuk **hash** untuk keamanan.
+
+---
+
+### - Tabel `kategori`
+
+Digunakan untuk mengelompokkan buku berdasarkan jenisnya.
+
+```sql
+CREATE TABLE kategori (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nama_kategori VARCHAR(50)
+);
+```
+
+---
+
+### - Tabel `buku`
+
+Menyimpan data koleksi buku perpustakaan.
+
+```sql
+CREATE TABLE buku (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    judul VARCHAR(150),
+    penulis VARCHAR(100),
+    kategori_id INT,
+    stok INT,
+    gambar VARCHAR(100)
+);
+```
+
+Kolom `stok` akan berkurang saat buku dipinjam dan bertambah saat dikembalikan.
+
+---
+
+### - Tabel `peminjaman`
+
+Digunakan untuk mencatat transaksi peminjaman buku.
+
+```sql
+CREATE TABLE peminjaman (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    buku_id INT,
+    tanggal_pinjam DATE,
+    tanggal_kembali DATE,
+    status VARCHAR(20),
+    denda INT
+);
+```
+
+Status peminjaman:
+
+* `Dipinjam`
+* `Terlambat`
+* `Selesai`
+
+---
+
+### - Relasi Database (Singkat)
+
+* **users → peminjaman** : satu user bisa banyak peminjaman
+* **buku → peminjaman** : satu buku bisa dipinjam berkali-kali
+* **kategori → buku** : satu kategori punya banyak buku
 
 ---
 
@@ -272,12 +350,42 @@ $this->conn->begin_transaction();
 ## 13. Dokumentasi Tampilan Aplikasi
 
 - Halaman Login
+  <img width="1364" height="682" alt="Screenshot 2026-01-06 181936" src="https://github.com/user-attachments/assets/27054fcf-c229-45e8-bb8f-9bbbd6dc8b85" />
+
 - Katalog Buku
+  <img width="1365" height="681" alt="Screenshot 2026-01-06 210031" src="https://github.com/user-attachments/assets/831304cf-0f4c-49ab-8fad-79c4c7f1953c" />
+
 - Tambah Buku
+  <img width="1358" height="671" alt="Screenshot 2026-01-06 193044" src="https://github.com/user-attachments/assets/b73cf703-c83a-4473-833b-d478d09ea81c" />
+  <img width="1360" height="675" alt="Screenshot 2026-01-06 193156" src="https://github.com/user-attachments/assets/a1ac8cdd-151d-4c47-887b-384083c94b7e" />
+
 - Edit Buku
+  <img width="1365" height="675" alt="Screenshot 2026-01-06 192701" src="https://github.com/user-attachments/assets/f999272d-a70b-486a-8566-f102f88c43be" />
+  <img width="1365" height="674" alt="Screenshot 2026-01-06 210457" src="https://github.com/user-attachments/assets/0f442780-5d4b-4b8a-9a3d-8dc17367bd51" />
+
+- Menghapus Buku
+  <img width="1361" height="677" alt="Screenshot 2026-01-06 193113" src="https://github.com/user-attachments/assets/671e3a2d-c8e3-4be1-a346-60e73684e8d0" />
+  <img width="1365" height="673" alt="Screenshot 2026-01-06 193215" src="https://github.com/user-attachments/assets/698e795b-b454-4504-9559-e0e3e73d4c92" />
+
+- Search Buku
+  <img width="1363" height="671" alt="Screenshot 2026-01-06 182058" src="https://github.com/user-attachments/assets/d4daa7e2-06f0-4074-80eb-9fa5bb9289c3" />
+
 - Form Peminjaman
+  <img width="1362" height="680" alt="Screenshot 2026-01-06 192743" src="https://github.com/user-attachments/assets/8ef99015-828f-466c-b87f-e7ac26e3832a" />
+  <img width="1361" height="678" alt="Screenshot 2026-01-06 192801" src="https://github.com/user-attachments/assets/08516f47-d7e0-4ca8-9f74-e50dfa2e50c4" />
+  
+- Form Pengembalian
+  <img width="1365" height="683" alt="Screenshot 2026-01-06 192816" src="https://github.com/user-attachments/assets/cf93db4b-75a6-42d6-80bf-375985295aff" />
+
 - Riwayat Peminjaman
+- <img width="1363" height="676" alt="Screenshot 2026-01-06 193249" src="https://github.com/user-attachments/assets/02c1fdee-1185-450d-8cdc-16d733d82378" />
+  <img width="1363" height="206" alt="Screenshot 2026-01-06 193316" src="https://github.com/user-attachments/assets/b089793b-8ae3-490c-b3f2-80060d28090f" />
+
 - Cetak Laporan
+- <img width="1352" height="682" alt="Screenshot 2026-01-06 182449" src="https://github.com/user-attachments/assets/9355872e-6d90-407d-82c7-2ecb2f23d5c5" />
+
+- Tombol Keluar
+  <img width="1363" height="675" alt="Screenshot 2026-01-06 211145" src="https://github.com/user-attachments/assets/eb197ea0-e18e-439d-82f7-d77573716993" />
 
 ---
 
