@@ -386,6 +386,24 @@ $this->conn->begin_transaction();
 
 - **Tombol Keluar**
   <img width="1363" height="675" alt="Screenshot 2026-01-06 211145" src="https://github.com/user-attachments/assets/eb197ea0-e18e-439d-82f7-d77573716993" />
+  
+- Mobile Responsive
+  Aplikasi diuji menggunakan Chrome Developer Tools – Mobile Preview.
+  Pada contoh pengujian di device Samsung Galaxy S20 Ultra, tampilan menyesuaikan:
+  
+  - navbar berubah menjadi tombol menu (hamburger)
+  
+  - card peminjaman mengecil proporsional
+  
+  - tabel berubah menjadi scroll horizontal
+  
+  - tombol aksi besar dan mudah diklik di layar sentuh
+  
+  - margin & padding diperkecil agar muat di layar kecil
+
+  Halaman yang diuji pada gambar:
+  <img width="1366" height="683" alt="Screenshot (1642)" src="https://github.com/user-attachments/assets/f79ccc7a-f1c2-4c97-89f5-a2938a9d877d" />
+  <img width="1366" height="686" alt="Screenshot (1641)" src="https://github.com/user-attachments/assets/e7484a74-2f54-4fd4-adc3-113fad5116df" />
 
 ---
 
