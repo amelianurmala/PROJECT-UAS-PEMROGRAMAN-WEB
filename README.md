@@ -1,12 +1,14 @@
 # PROJECT-UAS-PEMROGRAMAN-WEB
 
-Nama          | **Amelia Nurmala Dewi**   
-NIM           | **312410199**        
-Kelas         | **TI.24.A2**      
+** Nama          : Amelia Nurmala Dewi**
+
+** NIM           : 312410199**
+
+** Kelas         : TI.24.A2**      
 
 ---
 
-# SISTEM PERPUSTAKAAN DIGITAL (SIPERPUS)
+## SISTEM PERPUSTAKAAN DIGITAL (SIPERPUS)
 
 ## 1. Pendahuluan
 
@@ -38,25 +40,25 @@ Tujuan utama pembuatan aplikasi SIPERPUS adalah:
 - XAMPP
 
 ## 4. Fitur Aplikasi
-### 🔐 Autentikasi
+### Autentikasi
 - Login pengguna
 - Session management
 - Logout
 
-### 📚 Manajemen Buku
+### Manajemen Buku
 - Tambah buku
 - Edit buku
 - Hapus buku
 - Upload cover buku
 - Pencarian & pagination
 
-### 🔄 Peminjaman Buku
+### Peminjaman Buku
 - Proses pinjam buku
 - Batas waktu pengembalian
 - Pengembalian buku
 - Perhitungan denda otomatis
 
-### 🧾 Laporan
+### Laporan
 - Riwayat peminjaman
 - Statistik peminjaman
 - Cetak laporan (print)
@@ -259,7 +261,7 @@ $method = $url[1] ?? 'index';
 
 ## 9. Model (Logika Database)
 
-### 📁 `User.php`
+### `User.php`
 
 Fungsi penting:
 
@@ -273,7 +275,7 @@ password_hash($password, PASSWORD_DEFAULT);
 
 ---
 
-### 📁 `Buku.php`
+### `Buku.php`
 
 Fungsi penting:
 
@@ -288,7 +290,7 @@ public function kurangiStok($id)
 
 ---
 
-### 📁 `Peminjaman.php`
+### `Peminjaman.php`
 
 Fungsi penting:
 
@@ -304,18 +306,18 @@ $this->conn->begin_transaction();
 
 ## 10. Controller (Penghubung)
 
-### 📁 `AuthController`
+### `AuthController`
 
 * Login
 * Logout
 * Session user
 
-### 📁 `BukuController`
+### `BukuController`
 
 * Menampilkan katalog
 * Tambah, edit, hapus buku
 
-### 📁 `PeminjamanController`
+### `PeminjamanController`
 
 * Proses pinjam
 * Proses kembali
