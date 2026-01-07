@@ -1,10 +1,10 @@
 # PROJECT-UAS-PEMROGRAMAN-WEB
 
-**Nama          : Amelia Nurmala Dewi**
+*Nama          : Amelia Nurmala Dewi*
 
-**NIM           : 312410199**
+*NIM           : 312410199*
 
-**Kelas         : TI.24.A2**      
+*Kelas         : TI.24.A2*
 
 ---
 
